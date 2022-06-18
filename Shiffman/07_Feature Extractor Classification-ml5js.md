@@ -9,17 +9,19 @@ In this video, I use ml5's feature extractor and re-train the MobileNet model to
 
 Links discussed in this course:
 -   🔗 ml5.js: https://ml5js.org
--   🔗 Teachable Machine: https://teachablemachine.withgoogle.com/
 -   🔗 New Classification & Regression Examples: https://github.com/ml5js/ml5-library/issues/128
 -   🔗 Pong ml5.js: https://github.com/matamalaortiz/Pong-ML
+-   🎥 Interacting with Sliders: https://youtu.be/587qclhguQg
+
+More links
+-   🎥 Coding Challenges: https://www.youtube.com/playlist?list=PLRqwX-V7Uu6ZiZxtDDRCi6uhfTH4FilpH
+-   🎥 Intro to Programming using p5.js: https://www.youtube.com/playlist?list=PLRqwX-V7Uu6Zy51Q-x9tMWIv9cueOFTFA
 
 Support
 -   🚂 Website: https://thecodingtrain.com/
 -   💡 Github: https://github.com/CodingTrain
 -   💖 Membership: https://youtube.com/thecodingtrain/join
 -   🖋️ Twitter: Video editing by Mathieu Blanchette: https://twitter.com/thecodingtrain
--   🎥 Coding Challenges: https://www.youtube.com/playlist?list=PLRqwX-V7Uu6ZiZxtDDRCi6uhfTH4FilpH
--   🎥 Intro to Programming using p5.js: https://www.youtube.com/playlist?list=PLRqwX-V7Uu6Zy51Q-x9tMWIv9cueOFTFA
 -   📄 Code of Conduct: https://github.com/CodingTrain/Code-of-Conduct
 -   🚩 Suggest Topics: https://github.com/CodingTrain/Suggestion-Box
 -   👾 Share your contributions: https://thecodingtrain.com/Guides/community-contribution-guide.html
