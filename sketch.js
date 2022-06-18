@@ -1,51 +1,71 @@
-// ml5.js: Object Detection with COCO-SSD (Webcam)
+// Teachable Machine
 // The Coding Train / Daniel Shiffman
-// https://thecodingtrain.com/learning/ml5/1.3-object-detection.html
-// https://youtu.be/QEzRxnuaZCk
+// https://thecodingtrain.com/TeachableMachine/1-teachable-machine.html
+// https://editor.p5js.org/codingtrain/sketches/PoZXqbu4v
 
-// p5.js Web Editor - Image: https://editor.p5js.org/codingtrain/sketches/ZNQQx2n5o
-// p5.js Web Editor - Webcam: https://editor.p5js.org/codingtrain/sketches/VIYRpcME3
-// p5.js Web Editor - Webcam Persistence: https://editor.p5js.org/codingtrain/sketches/Vt9xeTxWJ
-
-// let img;
+// The video
 let video;
-let detector;
-let detections = [];
+// For displaying the label
+let label = "waiting...";
+// The classifier
+let classifier;
+let modelURL = 'https://storage.googleapis.com/tm-models/YadBJmj5/';
 
+// STEP 1: Load the model!
 function preload() {
-  // img = loadImage('dog_cat.jpg');
-  detector = ml5.objectDetector('cocossd');
+  classifier = ml5.imageClassifier(modelURL + 'model.json');
 }
 
-function gotDetections(error, results) {
-  if (error) {
-    console.error(error);
-  }
-  detections = results;
-  detector.detect(video, gotDetections);
-}
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(640, 520);
+  // Create the video
   video = createCapture(VIDEO);
-  video.size(640, 480);
   video.hide();
-  detector.detect(video, gotDetections);
+  // STEP 2: Start classifying
+  classifyVideo();
 }
 
+// STEP 2 classify the videeo!
+function classifyVideo() {
+  classifier.classify(video, gotResults);
+}
 
 function draw() {
+  background(0);
+
+  // Draw the video
   image(video, 0, 0);
 
-  for (let i = 0; i < detections.length; i++) {
-    let object = detections[i];
-    stroke(0, 255, 0);
-    strokeWeight(4);
-    noFill();
-    rect(object.x, object.y, object.width, object.height);
-    noStroke();
-    fill(255);
-    textSize(24);
-    text(object.label, object.x + 10, object.y + 24);
+  // STEP 4: Draw the label
+  textSize(32);
+  textAlign(CENTER, CENTER);
+  fill(255);
+  text(label, width / 2, height - 16);
+
+  // Pick an emoji, the "default" is train
+  let emoji = "🚂";
+  if (label == "Rainbow") {
+    emoji = "🌈";
+  } else if (label == "Unicorn") {
+    emoji = "🦄";
+  } else if (label == "Ukulele") {
+    emoji = "🎸";
   }
+
+  // Draw the emoji
+  textSize(256);
+  text(emoji, width / 2, height / 2);
+}
+
+// STEP 3: Get the classification!
+function gotResults(error, results) {
+  // Something went wrong!
+  if (error) {
+    console.error(error);
+    return;
+  }
+  // Store the label and classify again!
+  label = results[0].label;
+  classifyVideo();
 }
